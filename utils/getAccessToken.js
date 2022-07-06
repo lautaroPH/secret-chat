@@ -1,5 +1,6 @@
 export const getAccessToken = async ({ token }) => {
-  const res = await fetch('http://localhost:3000/api/get-access-token', {
+  const url = process.env.NEXT_PUBLIC_URL;
+  const res = await fetch(`${url}/api/get-access-token`, {
     headers: {
       jwt: token,
     },
