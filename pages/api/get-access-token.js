@@ -4,7 +4,7 @@ import { supabaseClient } from 'utils/supabaseClient';
 const TWILIO_ACCOUNT_SID = process.env.NEXT_PUBLIC_TWILIO_ACCOUNT_SID;
 const TWILIO_API_KEY = process.env.NEXT_PUBLIC_TWILIO_API_KEY;
 const TWILIO_API_SECRET = process.env.NEXT_PUBLIC_TWILIO_API_SECRET;
-const SERVICE_SID = process.env.NEXTPUBLIC_SERVICE_SID;
+const SERVICE_SID = process.env.NEXT_PUBLIC_SERVICE_SID;
 
 export default async function handler(request, response) {
   const jwt = request.headers.jwt;
