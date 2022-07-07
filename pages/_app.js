@@ -1,7 +1,17 @@
-import '../styles/globals.css'
+import { ActiveConversation } from 'context/conversationContext';
+import '../styles/globals.css';
+import { useState } from 'react';
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  const [activeConversation, setActiveConversation] = useState('');
+
+  return (
+    <ActiveConversation.Provider
+      value={{ activeConversation, setActiveConversation }}
+    >
+      <Component {...pageProps} />
+    </ActiveConversation.Provider>
+  );
 }
 
-export default MyApp
+export default MyApp;
