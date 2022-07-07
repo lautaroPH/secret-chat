@@ -1,4 +1,4 @@
-import { ActiveConversation } from 'context/conversationContext';
+import { ActiveConversation } from 'context/ConversationContext';
 import '../styles/globals.css';
 import { useState } from 'react';
 
