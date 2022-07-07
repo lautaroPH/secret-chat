@@ -1,8 +1,8 @@
-import { ActiveConversation } from 'context/conversationContext';
+import { ActiveConversation } from 'context/ConversationContext';
 import { useRouter } from 'next/router';
 import { useContext, useEffect } from 'react';
-import Conversation from 'components/Room/Conversation';
-import ConversationInput from 'components/Room/ConversationInput';
+// import Conversation from 'components/Room/Conversation';
+// import ConversationInput from 'components/Room/ConversationInput';
 
 export default function Room() {
   const { activeConversation } = useContext(ActiveConversation);
