@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { eventsUser } from 'utils/eventsUser';
 
 const useSession = () => {
-  const [session, setSession] = useState();
+  const [session, setSession] = useState(false);
 
   useEffect(() => {
     setSession(supabaseClient.auth.session());
