@@ -5,6 +5,7 @@ import Title from 'components/Title';
 import StartChat from 'components/FormRoom/StartChat';
 import JoinChat from 'components/FormRoom/JoinChat';
 import { useState } from 'react';
+import MatrixCard from 'matrix-card';
 
 export default function Home() {
   const user = useUser();
