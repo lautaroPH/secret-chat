@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { supabaseClient } from 'utils/supabaseClient';
+import { loginUser } from 'utils/loginUser';
 
 const ButtonLogin = ({
   background,
+  backgroundOpacity,
   text,
   backgroundHover,
   textHover,
@@ -13,27 +14,15 @@ const ButtonLogin = ({
 }) => {
   const [githubHoverIcon, setGithubHoverIcon] = useState(false);
 
-  const handleGithubHover = async () => {
-    const { error } = await supabaseClient.auth.signIn({
-      provider: 'github',
-    });
-
-    if (error) {
-      alert(error);
-    }
-  };
-
   return (
     <button
-      className={`flex items-center justify-center ${background} ${text} ${backgroundHover} ${textHover} w-4/5 mb-4 border border-white font-bold h-12 rounded focus:outline-none  transition-all duration-300`}
+      className={`flex items-center justify-center ${background} ${backgroundOpacity} ${text} text-xl ${backgroundHover} ${textHover} w-4/5 mb-4 border border-green-dark-code font-semibold p-3 px-4 rounded-lg focus:outline-none  transition-all duration-300`}
       onMouseOver={() => setGithubHoverIcon(true)}
       onMouseLeave={() => setGithubHoverIcon(false)}
-      onClick={() => {
-        provider === 'Github' && handleGithubHover();
-      }}
+      onClick={() => loginUser(provider)}
     >
       {!githubHoverIcon ? firstIcon : secondIcon}
-      <span className="w-40">{title}</span>
+      <span className="ml-2">{title}</span>
     </button>
   );
 };
