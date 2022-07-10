@@ -18,7 +18,7 @@ const UserInfo = () => {
           />
         </picture>
       )}
-      <h1 className="ml-2 text-lg font-semibold">
+      <h1 className="ml-3 text-lg tracking-wider text-green-code">
         {user?.user_metadata?.user_name}
       </h1>
     </div>

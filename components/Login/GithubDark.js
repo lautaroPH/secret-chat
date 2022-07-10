@@ -1,8 +1,8 @@
 const GithubDark = () => (
   <svg
-    className="w-8 h-8 "
+    className="w-9 h-9"
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 30 30"
+    viewBox="0 0 20 20"
   >
     <path
       style={{
