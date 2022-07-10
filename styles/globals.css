@@ -4,17 +4,21 @@
 
 @font-face {
   font-family: matrixFont;
-  src: url(./matrixFont.ttf);
+  src: url(../assets/fonts/matrixFont.ttf);
+}
+
+@font-face {
+  font-family: writeMachineFont;
+  src: url(../assets/fonts/writeMachine.ttf);
 }
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: writeMachineFont, monospace, Arial, Helvetica, sans-serif;
   color: #fff;
-  background-color: #333;
+  background-color: rgba(10, 10, 10);
 }
 
 a {
@@ -26,6 +30,18 @@ a {
   box-sizing: border-box;
 }
 
-.text-border {
-  -webkit-text-stroke: 1px #075c07;
+.titleAnimation {
+  animation: typing 2s steps(12), blink .5s infinite step-end alternate;
+}
+
+@keyframes typing {
+  from {
+    width: 0
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
 }

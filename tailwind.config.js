@@ -8,6 +8,8 @@ module.exports = {
     extend: {
       colors: {
         'primary-dark': '#282C34',
+        'green-code': '#0c0',
+        'green-dark-code': '#0f0',
       },
       fontFamily: {
         matrix: ['matrixFont', 'ui-monospace'],
