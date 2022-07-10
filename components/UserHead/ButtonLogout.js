@@ -1,5 +1,4 @@
 import { supabaseClient } from 'utils/supabaseClient';
-import LogoutSvg from './LogoutSvg';
 
 const ButtonLogout = () => {
   const handleClick = async () => {
@@ -13,10 +12,9 @@ const ButtonLogout = () => {
   return (
     <button
       onClick={handleClick}
-      className="flex items-center justify-center p-[6px] transition-all duration-300 border border-white rounded hover:bg-white hover:text-primary-dark focus:outline-none"
+      className="flex items-center justify-center transition-all duration-300 text-green-code focus:outline-none"
     >
-      <LogoutSvg />
-      <span className="ml-2 mr-1 text-sm">Cerrar sesion</span>
+      <span className="ml-1 mr-1 text-sm">Log out</span>
     </button>
   );
 };
