@@ -20,11 +20,6 @@ const Conversation = () => {
       });
   }, [activeConversation]);
 
-  // after
-  // afterUpdate(() => {
-  // 	window.scrollTo(0, div.scrollHeight);
-  // });
-
   return (
     <div>
       {messages.map((message, index) => (

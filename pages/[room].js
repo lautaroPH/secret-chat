@@ -24,9 +24,7 @@ export default function Room() {
             room,
             accessToken,
           })
-            .then((conversation) => {
-              setActiveConversation(conversation);
-            })
+            .then(setActiveConversation)
             .catch((err) => {
               // setLoading(false);
               alert(errorsMessages(err.message));
@@ -63,7 +61,7 @@ export default function Room() {
   return (
     <div>
       {activeConversation?.uniqueName && (
-        <div className="relative max-w-6xl py-2 mx-auto">
+        <div id="div-conversation" className="relative max-w-6xl py-2 mx-auto">
           <h2 className="text-3xl">{activeConversation.uniqueName}</h2>
           <button onClick={handleClick}>Add user</button>
           <Conversation />
