@@ -1,0 +1,4 @@
+export const ACTIONS_CHAT = {
+  CREATE_CHAT: 'CREATE_CHAT',
+  JOIN_CHAT: 'JOIN_CHAT',
+};
