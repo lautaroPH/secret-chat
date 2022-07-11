@@ -10,16 +10,19 @@ const Conversation = () => {
     return () =>
       activeConversation.getMessages().then((paginator) => {
         setMessages(paginator.items);
+        console.log(paginator);
       });
   }, [activeConversation]);
 
   useEffect(() => {
     return () =>
       activeConversation.on('messageAdded', (message) => {
+        console.log(message);
         setMessages((originMessages) => [...originMessages, message]);
       });
   }, [activeConversation]);
 
+  console.log(messages);
   return (
     <div>
       {messages.map((message, index) => (
