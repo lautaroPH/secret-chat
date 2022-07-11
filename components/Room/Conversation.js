@@ -23,6 +23,7 @@ const Conversation = () => {
   }, [activeConversation]);
 
   console.log(messages);
+  console.log(activeConversation);
   return (
     <div>
       {messages.map((message, index) => (
