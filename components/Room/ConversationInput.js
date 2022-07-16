@@ -1,18 +1,22 @@
 import { ActiveConversation } from 'context/ConversationContext';
 import { useContext, useState } from 'react';
 
-const ConversationInput = () => {
+const ConversationInput = ({ divRef }) => {
   const { activeConversation } = useContext(ActiveConversation);
   const [message, setMessage] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const div = document.getElementById('div-conversation');
-    if (message) {
+    if (message.trim()) {
       await activeConversation.sendMessage(message); //Numero de mensajes
       setMessage('');
-      window.scrollTo(0, div.scrollHeight);
+      divRef.current.scrollTo(0, divRef.current.scrollHeight);
     }
+  };
+
+  const handleChange = (e) => {
+    activeConversation.typing();
+    setMessage(e.target.value);
   };
 
   return (
@@ -22,7 +26,7 @@ const ConversationInput = () => {
           className="w-full p-2 text-black border-2 border-gray-700"
           type="text"
           value={message}
-          onChange={(event) => setMessage(event.target.value)}
+          onChange={handleChange}
           placeholder="Escribe tu mensaje aquí"
         />
       </form>
