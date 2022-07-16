@@ -11,6 +11,7 @@ export const createConversation = async ({ room, accessToken }) => {
         try {
           conversation = await client.createConversation({
             uniqueName: room.trim(),
+            friendlyName: room.trim(),
           });
 
           await conversation.join();
