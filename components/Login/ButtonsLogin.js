@@ -1,7 +1,6 @@
 import { PROVIDER_VALUES } from 'utils/providerValues';
 import ButtonLogin from './ButtonLogin';
-import GithubDark from './GithubDark';
-import GithubLight from './GithubLight';
+import GithubSvg from './GithubSvg';
 
 const ButtonsLogin = () => {
   return (
@@ -10,12 +9,9 @@ const ButtonsLogin = () => {
         backgroundOpacity="bg-opacity-50"
         background="bg-black"
         text="text-green-code"
-        backgroundHover="hover:bg-white"
-        textHover="hover:text-primary-dark"
         title="Ingresar con Github"
         provider={PROVIDER_VALUES.github}
-        firstIcon={<GithubLight />}
-        secondIcon={<GithubDark />}
+        Icon={<GithubSvg />}
       />
     </div>
   );

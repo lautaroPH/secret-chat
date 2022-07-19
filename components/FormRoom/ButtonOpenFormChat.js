@@ -12,7 +12,7 @@ const ButtonOpenFormChat = ({
     <button
       disabled={buttonActive}
       onClick={handleClick}
-      className="w-3/5 p-3 px-4 text-xl font-semibold tracking-wide transition-all duration-300 bg-black border rounded-lg disabled:hover:text-green-code disabled:opacity-50 disabled:cursor-not-allowed text-green-code bg-opacity-60 border-green-dark-code hover:text-white focus:outline-none"
+      className="w-3/5 p-3 px-4 text-xl font-semibold tracking-wide transition-all duration-300 bg-black border rounded-lg disabled:opacity-50 disabled:cursor-not-allowed text-green-code bg-opacity-60 border-green-dark-code focus:outline-none"
     >
       {title}
     </button>
