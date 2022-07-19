@@ -48,7 +48,7 @@ const Form = ({ title, buttonTitle, action, setOpenForm, setButtonActive }) => {
             })
             .catch((err) => {
               setLoading(false);
-              setError(errorsMessages(err.message));
+              setError(errorsMessages(`${err.message} room`));
               setRoom('');
             });
         } else if (action === ACTIONS_CHAT.JOIN_CHAT) {
@@ -62,14 +62,14 @@ const Form = ({ title, buttonTitle, action, setOpenForm, setButtonActive }) => {
             })
             .catch((err) => {
               setLoading(false);
-              setError(errorsMessages(err.message));
+              setError(errorsMessages(`${err.message} room`));
               setRoom('');
             });
         }
       })
       .catch((err) => {
         setLoading(false);
-        setError(errorsMessages(err.message));
+        setError(errorsMessages(`${err.message} room`));
         setRoom('');
       });
   };
@@ -101,14 +101,14 @@ const Form = ({ title, buttonTitle, action, setOpenForm, setButtonActive }) => {
           <button
             disabled={!roomTrim || loading || error}
             type="submit"
-            className="w-2/5 p-2 px-4 mr-3 text-lg font-semibold tracking-widest transition-all duration-300 bg-transparent bg-black bg-opacity-50 border rounded-lg border-green-dark-code disabled:opacity-60 disabled:cursor-not-allowed text-green-code hover:bg-transparent hover:text-white focus:outline-none"
+            className="w-2/5 p-2 px-4 mr-3 text-lg font-semibold tracking-widest transition-all duration-300 bg-transparent bg-black bg-opacity-50 border rounded-lg border-green-dark-code disabled:opacity-60 disabled:cursor-not-allowed text-green-code focus:outline-none"
           >
             {buttonTitle}
           </button>
           <button
             onClick={handleClickCanel}
             type="submit"
-            className="w-2/5 p-2 px-4 text-lg font-semibold tracking-widest transition-all duration-300 bg-transparent bg-black bg-opacity-50 border rounded-lg border-green-dark-code text-green-code hover:bg-transparent hover:text-white focus:outline-none"
+            className="w-2/5 p-2 px-4 text-lg font-semibold tracking-widest transition-all duration-300 bg-transparent bg-black bg-opacity-50 border rounded-lg border-green-dark-code text-green-code focus:outline-none"
           >
             Cancel
           </button>
