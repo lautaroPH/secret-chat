@@ -6,11 +6,11 @@ import ConversationInput from 'components/Room/ConversationInput';
 import useSession from 'hooks/useSession';
 import { getAccessToken } from 'utils/getAccessToken';
 import { joinConversation } from 'utils/joinConversation';
-import { errorsMessages } from 'utils/errorsMessages';
-import { addUserToChat } from 'utils/addUserToChat';
 import useUser from 'hooks/useUser';
-import ThreePointsSvg from 'components/ThreePointsSvg';
+import ThreePointsSvg from 'components/Room/ThreePointsSvg';
 import ModalChatOptions from 'components/Modal/ModalChatOptions';
+import Swal from 'sweetalert2';
+import { swalErrors } from 'Swals/SwalErrors';
 
 export default function Room() {
   const { activeConversation, setActiveConversation } =
@@ -33,14 +33,12 @@ export default function Room() {
           })
             .then(setActiveConversation)
             .catch((err) => {
-              // setLoading(false);
-              alert(errorsMessages(err.message));
+              Swal.fire(swalErrors(`${err.message} accessRoom`));
               router.push('/');
             });
         })
         .catch((err) => {
-          // setLoading(false);
-          alert(errorsMessages(err.message));
+          Swal.fire(swalErrors(`${err.message} accessRoom`));
           router.push('/');
         });
     }
@@ -52,25 +50,14 @@ export default function Room() {
     }
   }, [session, router]);
 
-  const handleClick = () => {
-    getAccessToken({ token: session.access_token })
-      .then((accessToken) => {
-        addUserToChat(activeConversation, accessToken, 'bravesaturn')
-          .then((res) => console.log(res))
-          .catch((err) => console.log(err));
-      })
-      .catch((err) => {
-        alert(errorsMessages(err.message));
-        router.push('/');
-      });
-  };
-
   return (
     <div className="h-screen mx-auto">
       {activeConversation?.uniqueName && (
         <div className="h-screen">
-          <div className="flex p-3 items-center justify-between bg-black bg-opacity-50">
-            <h2 className="text-3xl text-left">Chat de rena</h2>
+          <div className="flex items-center justify-between p-3 bg-black bg-opacity-50">
+            <h2 className="text-3xl text-left">
+              {activeConversation.friendlyName}
+            </h2>
             <button onClick={() => setOpenChatOptionsModal(true)}>
               <ThreePointsSvg />
             </button>
