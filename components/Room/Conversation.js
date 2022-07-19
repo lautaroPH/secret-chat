@@ -1,99 +1,99 @@
-import { ActiveConversation } from 'context/ConversationContext';
+import useConversation from 'hooks/useConversation';
 import useNearScreen from 'hooks/useNearScreen';
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import ButtonBottom from './ButtonBottom';
 import Message from './Message';
+import TypingMessage from './TypingMessage';
 
 const Conversation = ({ user, divRef }) => {
-  const { activeConversation } = useContext(ActiveConversation);
-  const [messages, setMessages] = useState(null);
-  const [prevPage, setPrevPage] = useState(null);
-  const [showButton, setShowButton] = useState(false);
-  const externalRef = useRef();
+  const bottomRef = useRef();
+  const topRef = useRef();
 
-  const { isNearScreen } = useNearScreen({
-    externalRef: !messages ? null : externalRef,
+  const {
+    messages,
+    fetchPrevPage,
+    prevPage,
+    getMessageAdded,
+    getMessages,
+    newMessageNumber,
+    resetsNumberMessages,
+    typing,
+    typingStart,
+    typingEnd,
+    participantJoin,
+    participantLeft,
+  } = useConversation();
+
+  const { isNearScreen: isNearBottomScreen } = useNearScreen({
+    externalRef: !messages ? null : bottomRef,
+    once: false,
+  });
+
+  const { isNearScreen: isNearTopScreen } = useNearScreen({
+    externalRef: !messages ? null : topRef,
     once: false,
   });
 
   useEffect(() => {
-    if (!messages) {
-      activeConversation.getMessages().then((paginator) => {
-        setMessages(paginator.items.reverse());
-        setPrevPage(paginator.hasPrevPage ? paginator.prevPage : null);
-      });
-    }
-  }, [activeConversation, messages]);
+    getMessages();
+  }, [getMessages]);
 
   useEffect(() => {
-    if (messages) {
-      activeConversation.on('messageAdded', (message) => {
-        if (user?.user_metadata?.user_name !== message.author) {
-          isNearScreen
-            ? console.log('you are near screen')
-            : setShowButton(true);
-        }
-        setMessages([message, ...messages]);
-      });
-    }
-  }, [activeConversation, user, messages, isNearScreen, divRef]);
+    getMessageAdded();
+  }, [getMessageAdded]);
 
-  const fetchPrevPage = () => {
-    prevPage.then((paginator) => {
-      setMessages([...messages, ...paginator.items.reverse()]);
-      setPrevPage(paginator.hasPrevPage ? paginator.prevPage : null);
-    });
-  };
+  useEffect(() => {
+    participantJoin();
+  }, [participantJoin]);
 
-  // useEffect(() => {
-  //   return () =>
-  //     activeConversation.on('participantJoined', (participant) => {
-  //       console.log(participant);
-  //     });
-  // }, [activeConversation]);
-  // useEffect(() => {
-  //   activeConversation.on('typingStarted', (messageTyping) => {
-  //     console.log(messageTyping, 'typingStarted');
-  //   });
-  // }, [activeConversation]);
-
-  // useEffect(() => {
-  //   activeConversation.on('typingEnded', (messageTyping) => {
-  //     console.log(messageTyping, 'typingEnded');
-  //   });
-  // }, [activeConversation]);
+  useEffect(() => {
+    participantLeft();
+  }, [participantLeft]);
 
   return (
-    <>
-      <div
-        id="scrollableDiv"
-        className="flex flex-col-reverse overflow-scroll h-5/6"
-        ref={divRef}
-      >
-        <div ref={externalRef}></div>
-        {messages && (
-          <InfiniteScroll
-            dataLength={messages?.length}
-            next={fetchPrevPage}
-            inverse={true}
-            hasMore={prevPage}
-            style={{ display: 'flex', flexDirection: 'column-reverse' }}
-            loader={<h4>Loading...</h4>}
-            scrollableTarget="scrollableDiv"
-          >
-            {messages.map((message, index) => (
-              <Message
-                key={index + message.body}
-                body={message.body}
-                author={message.author}
-                userName={user?.user_metadata?.user_name}
-                date={message.dateCreated}
-              />
-            ))}
-          </InfiniteScroll>
-        )}
-      </div>
-    </>
+    <div
+      id="scrollableDiv"
+      className="flex flex-col-reverse overflow-scroll h-5/6"
+      ref={divRef}
+    >
+      <div className="pt-1" ref={bottomRef}></div>
+      <ButtonBottom
+        divRef={divRef}
+        isNearBottomScreen={isNearBottomScreen}
+        newMessageNumber={newMessageNumber}
+        resetsNumberMessages={resetsNumberMessages}
+      />
+      <TypingMessage
+        typing={typing}
+        typingStart={typingStart}
+        typingEnd={typingEnd}
+      />
+      {messages && (
+        <InfiniteScroll
+          dataLength={messages?.length}
+          next={fetchPrevPage}
+          inverse={true}
+          hasMore={prevPage && isNearTopScreen}
+          style={{ display: 'flex', flexDirection: 'column-reverse' }}
+          loader={<h4>Loading...</h4>}
+          scrollableTarget="scrollableDiv"
+        >
+          {messages.map((message, index) => (
+            <Message
+              key={index}
+              body={message?.body}
+              author={message?.author}
+              userName={user?.user_metadata?.user_name}
+              date={message?.dateCreated}
+              type={message?.type}
+              identity={message?.identity}
+            />
+          ))}
+        </InfiniteScroll>
+      )}
+      <div className="pt-1" ref={topRef}></div>
+    </div>
   );
 };
 
