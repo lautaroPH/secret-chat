@@ -7,7 +7,6 @@ export const createUser = async (user) => {
     .from('profiles')
     .select('*')
     .eq('id', user.id);
-  console.log(profile);
   if (!profile || profile.length === 0) {
     const { error } = await supabaseClient.from('profiles').insert([
       {
