@@ -1,5 +1,5 @@
 # Secret Chat
-Hckathon Midudev
+Hackathon Midudev
 
 Secret chat where you can talk to the people you choose
 
