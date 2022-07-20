@@ -1,5 +1,5 @@
 # Secret Chat
-Hackathon Midudev
+## hakchaton midudev
 
 Secret chat where you can talk to the people you choose
 
@@ -7,7 +7,18 @@ Go into https://secret-chat-two.vercel.app
 
 Developed with NextJs, TailwindCss, supabase and API de Twilio Conversations
 
-
+Functionalities:
+-Mobile only
+-Login with Github
+-Logout
+-Create a chat
+-Join a chat
+-Send Messages
+-Add users to a chat
+-Remove users
+-Change the name of the chat
+-Leave the chat
+-Delete the chat
 -----
 
 <div align="center">
