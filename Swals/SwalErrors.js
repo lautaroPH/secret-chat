@@ -5,5 +5,8 @@ export const swalErrors = (error) => {
     title: 'Error',
     text: errorsMessages(error),
     icon: 'error',
+    background: 'rgb(31 41 55)',
+    color: '#fff',
+    confirmButtonColor: '#115a11',
   };
 };

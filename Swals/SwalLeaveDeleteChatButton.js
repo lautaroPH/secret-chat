@@ -6,8 +6,10 @@ export const swalLeaveDeleteChatButton = (username, createdBy, chatName) => {
         : `You want to leave the chat "${chatName}"?`,
     icon: 'warning',
     showCancelButton: true,
-    confirmButtonColor: '#3085d6',
+    confirmButtonColor: '#115a11',
     cancelButtonColor: '#d33',
     confirmButtonText: username === createdBy ? 'Delete' : 'Leave',
+    background: 'rgb(31 41 55)',
+    color: '#fff',
   };
 };
