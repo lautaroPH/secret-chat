@@ -11,8 +11,8 @@ const Participant = ({
   setOpenModal,
 }) => {
   return (
-    <li key={sid} className="flex items-center pb-5">
-      <div className="flex-shrink-0">
+    <li key={sid} className="flex items-center pb-2 mt-3">
+      <div className="flex-shrink-0 w-10 h-10 overflow-hidden">
         <Image
           src={image}
           alt={userName}
