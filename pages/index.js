@@ -6,6 +6,7 @@ import StartChat from 'components/FormRoom/StartChat';
 import JoinChat from 'components/FormRoom/JoinChat';
 import { useEffect, useState } from 'react';
 import { createUser } from 'utils/createUser';
+import Head from 'next/head';
 
 export default function Home() {
   const user = useUser();
@@ -20,6 +21,10 @@ export default function Home() {
 
   return (
     <>
+      <Head>
+        <title>Secret chat</title>
+        <meta name="description" content="Midudev hackathon project" />
+      </Head>
       {user && <UserHead user={user} />}
       <div className="flex justify-center mt-16">
         <Title />

@@ -11,6 +11,7 @@ import ModalChatOptions from 'components/Modal/ModalChatOptions';
 import Swal from 'sweetalert2';
 import { swalErrors } from 'Swals/SwalErrors';
 import RoomHead from 'components/Room/RoomHead';
+import Head from 'next/head';
 
 export default function Room() {
   const { activeConversation, setActiveConversation } =
@@ -51,6 +52,13 @@ export default function Room() {
 
   return (
     <div className="h-screen mx-auto">
+      <Head>
+        <title>{activeConversation.friendlyName}</title>
+        <meta
+          name="description"
+          content={`${activeConversation.friendlyName} chat`}
+        />
+      </Head>
       {activeConversation?.uniqueName && (
         <div className="h-screen">
           <RoomHead
