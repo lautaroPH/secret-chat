@@ -3,7 +3,7 @@ Hackathon Midudev
 
 Secret chat where you can talk to the people you choose
 
-Entra en https://secret-chat-two.vercel.app
+Go into https://secret-chat-two.vercel.app
 
 Developed with NextJs, TailwindCss, supabase and API de Twilio Conversations
 
