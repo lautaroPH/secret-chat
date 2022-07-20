@@ -30,7 +30,7 @@ const ParticipantsList = ({ username, createdBy, setOpenModal }) => {
   }, [activeConversation]);
 
   return (
-    <ul className="px-2 py-1 mt-2 overflow-x-hidden overflow-y-scroll bg-gray-700 rounded-lg max-h-96">
+    <ul className="px-2 py-1 mt-2 overflow-x-hidden overflow-y-auto bg-gray-700 rounded-lg max-h-96">
       {loading ? (
         <>
           <SkeletonLoaderParticipant />
