@@ -4,7 +4,6 @@ import { useEffect, useRef } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import ButtonBottom from './ButtonBottom';
 import Message from './Message';
-import TypingMessage from './TypingMessage';
 
 const Conversation = ({ user, divRef }) => {
   const bottomRef = useRef();
@@ -18,9 +17,6 @@ const Conversation = ({ user, divRef }) => {
     getMessages,
     newMessageNumber,
     resetsNumberMessages,
-    typing,
-    typingStart,
-    typingEnd,
     participantJoin,
     participantLeft,
   } = useConversation();
@@ -54,7 +50,7 @@ const Conversation = ({ user, divRef }) => {
   return (
     <div
       id="scrollableDiv"
-      className="flex flex-col-reverse overflow-scroll h-5/6"
+      className="flex flex-col-reverse overflow-scroll overflow-x-hidden h-[85%]"
       ref={divRef}
     >
       <div className="pt-1" ref={bottomRef}></div>
@@ -64,11 +60,7 @@ const Conversation = ({ user, divRef }) => {
         newMessageNumber={newMessageNumber}
         resetsNumberMessages={resetsNumberMessages}
       />
-      <TypingMessage
-        typing={typing}
-        typingStart={typingStart}
-        typingEnd={typingEnd}
-      />
+
       {messages && (
         <InfiniteScroll
           dataLength={messages?.length}
