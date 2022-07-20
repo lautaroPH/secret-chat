@@ -1,34 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Secret Chat
+Hckathon Midudev
 
-## Getting Started
+Secret chat where you can talk to the people you choose
 
-First, run the development server:
+Entra en https://secret-chat-two.vercel.app
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+Developed with NextJs, TailwindCss, supabase and API de Twilio Conversations
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+-----
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+<div align="center">
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+  <img width="200" src="https://user-images.githubusercontent.com/1561955/177315611-490d347e-1201-4aff-b09c-d2ea9f453173.png" /><br />
+  <strong>HACKATHON JULIO 2022 - TWILIO + CHAT SECRETO 🚀</strong>
 
-## Learn More
+**🗓️ Fecha límite -> 20 de julio en Twitch.**<br />
+📹 Directo del 1 de julio con explicaciones -> https://www.twitch.tv/videos/1519558242<br />
 
-To learn more about Next.js, take a look at the following resources:
+</div>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## - 🎁 PREMIOS para los 3 primeros:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- [1] Keychron K3 Ultra-slim Wireless Mechanical Keyboard - Version 2 (Si no se puede enviar, se pagará lo que cueste el teclado con PayPal).
+- [2] 40€ en Redbubble.
+- [3] 20€ en Redbubble.
 
-## Deploy on Vercel
+## - ⚠️ Requisitos:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **[1] Registrarse en Twilio -> https://www.twilio.com/referral/xdppiQ 🥰 **
+- [2] Crea un chat secreto dónde sólo la gente que tú quieras pueda hablar **usando los servicios de Twilio Conversations.**
+- [3] La app/web debe estar **desplegada** para que la podamos ver.
+- [4] **El repositorio de código debe ser abierto** y el **README** debe indicar que participa en la hackathon.
+- [5] :date: Enviar el repositorio + deploy en este canal, en este hilo: https://discord.com/channels/741237973663612969/992476955792375928/992478015164518520
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## - 👀 Consideraciones:
+- Se tendrá en cuenta: ejecución del código (estructura...), look and feel (experiencia del usuario, diseño...), no puedes pillar una plantilla CSS de una aplicación que ya exista, que sea responsive y que funcione para móvil (mobile-first).
+- Se puede hacer con lo que quieras: Vanilla, Angular, React, Vue, Svelte, Nextjs, Nuxtjs, Remix... 
+- Se puede hacer equipo :partying_face::partying_face:.
+- 💅 Te puedes inspirar en el diseño: https://dribbble.com/
+
+[🐙 Muchos más servicios disponibles en Twilio](https://www.twilio.com/referral/xdppiQ)
