@@ -1,9 +1,5 @@
 const IsAdmin = () => {
-  return (
-    <p className="text-xs tracking-widest text-green-code border border-green-code p-[3px]">
-      Admin
-    </p>
-  );
+  return <p className="text-sm tracking-widest text-white opacity-40">Admin</p>;
 };
 
 export default IsAdmin;

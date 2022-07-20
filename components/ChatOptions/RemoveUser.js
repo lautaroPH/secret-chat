@@ -15,9 +15,9 @@ const RemoveUser = ({ identity, setOpenModal }) => {
   return (
     <button
       onClick={handleRemoveUser}
-      className="text-xs tracking-widest text-red-600 border border-red-600 p-[3px]"
+      className="text-sm tracking-widest text-red-500"
     >
-      Delete
+      Remove
     </button>
   );
 };
