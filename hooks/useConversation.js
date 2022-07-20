@@ -7,7 +7,6 @@ import { swalLeaveChat } from 'Swals/SwalLeaveChat';
 import { swalUserAdded } from 'Swals/SwalUserAdded';
 import { swalUserRemoved } from 'Swals/SwalUserRemoved';
 import Swal from 'sweetalert2';
-import { errorsMessages } from 'utils/errorsMessages';
 import useUser from './useUser';
 
 const useConversation = () => {
@@ -16,7 +15,6 @@ const useConversation = () => {
   const [newMessageNumber, setNewMessageNumber] = useState(0);
   const [prevPage, setPrevPage] = useState(null);
   const [participantsCount, setparticipantsCount] = useState(0);
-  const [typing, setTyping] = useState(null);
 
   const user = useUser();
 
@@ -54,7 +52,6 @@ const useConversation = () => {
   const participantJoin = () => {
     if (messages) {
       activeConversation.on('participantJoined', (participant) => {
-        console.log('participantJoined', participant);
         setMessages([
           {
             identity: participant.identity,
@@ -78,18 +75,6 @@ const useConversation = () => {
         ]);
       });
     }
-  };
-
-  const typingStart = () => {
-    activeConversation.on('typingStarted', (participant) => {
-      setTyping(participant);
-    });
-  };
-
-  const typingEnd = () => {
-    activeConversation.on('typingEnded', (participant) => {
-      setTyping(participant);
-    });
   };
 
   const getParticipantsCount = () => {
@@ -153,12 +138,9 @@ const useConversation = () => {
     getMessageAdded,
     participantJoin,
     participantLeft,
-    typingStart,
-    typingEnd,
     getParticipantsCount,
     newMessageNumber,
     resetsNumberMessages,
-    typing,
     deleteChat,
     leaveChat,
     addUser,
