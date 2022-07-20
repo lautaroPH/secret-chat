@@ -7,10 +7,10 @@ import useSession from 'hooks/useSession';
 import { getAccessToken } from 'utils/getAccessToken';
 import { joinConversation } from 'utils/joinConversation';
 import useUser from 'hooks/useUser';
-import ThreePointsSvg from 'components/Room/ThreePointsSvg';
 import ModalChatOptions from 'components/Modal/ModalChatOptions';
 import Swal from 'sweetalert2';
 import { swalErrors } from 'Swals/SwalErrors';
+import RoomHead from 'components/Room/RoomHead';
 
 export default function Room() {
   const { activeConversation, setActiveConversation } =
@@ -22,7 +22,6 @@ export default function Room() {
   const user = useUser();
 
   const divRef = useRef();
-
   useEffect(() => {
     if (!activeConversation && session && room) {
       getAccessToken({ token: session.access_token })
@@ -54,14 +53,10 @@ export default function Room() {
     <div className="h-screen mx-auto">
       {activeConversation?.uniqueName && (
         <div className="h-screen">
-          <div className="flex items-center justify-between p-3 bg-black bg-opacity-50">
-            <h2 className="text-3xl text-left">
-              {activeConversation.friendlyName}
-            </h2>
-            <button onClick={() => setOpenChatOptionsModal(true)}>
-              <ThreePointsSvg />
-            </button>
-          </div>
+          <RoomHead
+            setOpenChatOptionsModal={setOpenChatOptionsModal}
+            friendlyName={activeConversation.friendlyName}
+          />
           <Conversation divRef={divRef} user={user} />
           <ConversationInput divRef={divRef} />
           {openChatOptionsModal && (
