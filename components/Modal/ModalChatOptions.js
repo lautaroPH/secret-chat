@@ -10,7 +10,7 @@ const ModalChatOptions = ({ openModal, setOpenModal }) => {
         className="fixed inset-0 z-30 overflow-y-auto"
         onClose={setOpenModal}
       >
-        <div className="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center">
+        <div className="flex items-center justify-center max-h-screen px-3 pt-4 pb-64 text-center">
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -31,13 +31,13 @@ const ModalChatOptions = ({ openModal, setOpenModal }) => {
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
-            enterFrom="opacity-0 scale-95 translate-x-full"
-            enterTo="opacity-100 scale-100 translate-x-0"
+            enterFrom="opacity-0 scale-95"
+            enterTo="opacity-100 scale-100"
             leave="ease-in duration-200"
-            leaveFrom="opacity-100 scale-100 translate-x-0"
-            leaveTo="opacity-0 scale-95 translate-x-full"
+            leaveFrom="opacity-100 scale-100"
+            leaveTo="opacity-0 scale-95"
           >
-            <div className="inline-block w-full max-w-lg px-4 pt-5 pb-4 overflow-hidden text-left transition-all transform bg-gray-800 rounded-lg shadow-xl sm:my-8 sm:align-middle">
+            <div className="inline-block w-full max-w-lg px-4 py-5 overflow-hidden text-left transition-all transform bg-gray-800 rounded-lg shadow-xl sm:my-8 sm:align-middle">
               <ChatInfo setOpenModal={setOpenModal} />
             </div>
           </Transition.Child>
