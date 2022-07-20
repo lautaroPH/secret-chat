@@ -2,14 +2,12 @@ import FriendlyName from 'components/ChatOptions/FriendlyName';
 import ParticipantsNumber from 'components/ChatOptions/ParticipantsNumber';
 import { ActiveConversation } from 'context/ConversationContext';
 import useUser from 'hooks/useUser';
-import { useContext, useState } from 'react';
-import AddUserForm from './AddUserForm';
+import { useContext } from 'react';
 import ButtonAddUser from './ButtonAddUser';
 import DeleteLeaveChat from './DeleteLeaveChat';
 import ParticipantsList from './ParticipantsList';
 
 const ChatInfo = ({ setOpenModal }) => {
-  const [openInput, setOpenInput] = useState(false);
   const { activeConversation } = useContext(ActiveConversation);
   const user = useUser();
 
@@ -18,29 +16,19 @@ const ChatInfo = ({ setOpenModal }) => {
 
   return (
     <>
-      <FriendlyName
-        setOpenModal={setOpenModal}
-        username={username}
-        createdBy={createdBy}
-      />
+      <FriendlyName username={username} createdBy={createdBy} />
       <div>
-        <ParticipantsNumber />
         {username === createdBy && (
-          <ButtonAddUser setOpenInput={setOpenInput} openInput={openInput} />
+          <ButtonAddUser setOpenModal={setOpenModal} />
         )}
-        {openInput && (
-          <AddUserForm
-            setOpenInput={setOpenInput}
-            setOpenModal={setOpenModal}
-          />
-        )}
+        <ParticipantsNumber />
         <ParticipantsList
           username={username}
           createdBy={createdBy}
           setOpenModal={setOpenModal}
         />
       </div>
-      <div className="pt-5">
+      <div className="pt-5 text-center">
         <DeleteLeaveChat
           username={username}
           createdBy={createdBy}

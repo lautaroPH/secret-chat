@@ -8,7 +8,7 @@ const ParticipantsNumber = () => {
     getParticipantsCount();
   }, [getParticipantsCount]);
 
-  return <p>{participantsCount} participants</p>;
+  return <p className="text-sm opacity-90">{participantsCount} participants</p>;
 };
 
 export default ParticipantsNumber;

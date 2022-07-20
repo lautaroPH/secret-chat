@@ -1,19 +1,38 @@
-import UserAddSvg from 'components/ChatOptions/UserAddSvg';
+import useConversation from 'hooks/useConversation';
+import { useState } from 'react';
+import { swalEnterName } from 'Swals/SwalEnterName';
+import Swal from 'sweetalert2';
 
-const ButtonAddUser = ({ setOpenInput, openInput }) => {
-  const handleAddUser = () => {
-    setOpenInput(!openInput);
+const ButtonAddUser = ({ setOpenModal }) => {
+  const { addUser } = useConversation();
+  const [name, setName] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (name.trim()) {
+      addUser(name, setOpenModal);
+    } else if (!name.trim()) {
+      Swal.fire(swalEnterName);
+    }
   };
 
   return (
-    <button onClick={handleAddUser} className="flex items-center pt-5">
-      <span className="flex items-center justify-center flex-shrink-0 w-10 h-10 bg-green-700 rounded-full">
-        <UserAddSvg />
-      </span>
-      <p className="flex items-center justify-between w-full ml-3">
-        <span className="font-medium leading-5">Add participants</span>
-      </p>
-    </button>
+    <form
+      onSubmit={handleSubmit}
+      className="flex items-center justify-between mb-5"
+    >
+      <input
+        type="text"
+        placeholder="Enter a username"
+        onChange={(e) => setName(e.target.value)}
+        value={name}
+        className="w-full py-1 pl-4 text-lg bg-transparent border border-gray-500 rounded-full focus:outline-none"
+        autoFocus={true}
+      />
+      <button type="submit" className="ml-3 tracking-wider">
+        Add
+      </button>
+    </form>
   );
 };
 
