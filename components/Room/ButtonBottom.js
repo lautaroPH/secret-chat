@@ -28,8 +28,15 @@ const ButtonBottom = ({
   return (
     <>
       {showButton && (
-        <button onClick={handleClick} className="absolute bottom-24 right-3">
-          {newMessageNumber > 0 && newMessageNumber}
+        <button
+          onClick={handleClick}
+          className="absolute z-10 p-1 text-gray-700 bg-gray-400 rounded-full bottom-24 right-3"
+        >
+          {newMessageNumber > 0 && (
+            <span className="absolute flex items-center justify-center w-5 h-5 text-sm text-white bg-green-800 rounded-full -left-2 -top-3">
+              {newMessageNumber}
+            </span>
+          )}
           <ChevDronDoubleDownSvg />
         </button>
       )}
