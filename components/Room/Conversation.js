@@ -50,7 +50,7 @@ const Conversation = ({ user, divRef }) => {
   return (
     <div
       id="scrollableDiv"
-      className="flex flex-col-reverse overflow-scroll overflow-x-hidden h-[85%]"
+      className="flex flex-col-reverse overflow-y-auto overflow-x-hidden h-[85%]"
       ref={divRef}
     >
       <div className="pt-1" ref={bottomRef}></div>
